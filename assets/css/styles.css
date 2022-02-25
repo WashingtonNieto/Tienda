@@ -114,7 +114,7 @@ a:hover{
 
 /*BARRA LATERAL*/
 #lateral{
-    width: 25%;
+    width: 22%;
     min-height: 500px;
     float: left;
     margin-top: 20px;
@@ -187,7 +187,7 @@ input[type="email"]:focus{
 
 input[type="button"],
 input[type="submit"],
-button{
+button, .button{
     display: block;
     border-radius: 2px;
     width: auto;
@@ -200,6 +200,12 @@ button{
     cursor: pointer;
 }
 
+.button{
+    background: #33AE3D;
+    color: white !important;
+    text-decoration: none;
+}
+
 label,
 input[type="button"],
 input[type="submit"],
@@ -209,7 +215,49 @@ button{
 }
     
 
+/*CENTRAL*/
+#central{
+    width: 72%;
+    min-height: 500px;
+    float: right;
+    border-left: 1px solid #ccc;
+    box-shadow: -5px -1px 5x #ddd;
+    padding: 25px;
+}
+
+#central h1{
+    font-size: 24px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 20px;
+    padding-top: 0px;
+       
+}
+
+/*PRODUCTOS*/
+.product{
+    width: 30%;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+}
 
 .product img{
     width: 100px;
+    margin-bottom: 10px;
+}
+
+.product h2{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.product p{
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
 }
