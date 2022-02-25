@@ -10,42 +10,91 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
         <link rel="stylesheet" href="assets/css/styles.css">
     </head>
     <body>
-        <!-- CABECERA -->
-        <header id="header">
-            <div id="logo">
-                <img src="assets/img/camiseta.png" alt="Camiseta Logo" />
-                <a href="index.php">
-                    Tienda de camisetas
-                </a>
+        <div id="container">
+            <!-- CABECERA -->
+            <header id="header">
+                <div id="logo">
+                    <img src="assets/img/camiseta.png" alt="Camiseta Logo" />
+                    <a href="index.php">
+                        Tienda de camisetas
+                    </a>
+                </div>
+
+            </header>
+
+            <!-- MENU -->
+            <nav id="menu">
+                <ul>
+                    <li>
+                        <a href="#">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="#">Categoria1</a>
+                    </li>
+                    <li>
+                        <a href="#">Categoria2</a>
+                    </li>
+                    <li>
+                        <a href="#">Categoria3</a>
+                    </li>
+                    <li>
+                        <a href="#">Categoria4</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div id="content">
+                <!-- BARRA LATERAL -->
+                <aside id="lateral">
+                    <div id="login" class="block_aside">
+                        <h3>Entrar a la web</h3>
+                        <form action="#" method="post">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" />
+                            <label for="password">Contrasena</label>
+                            <input type="password" name="password" />
+                            <input type="submit" value="Enviar" />
+
+                        </form>
+                        <ul>
+                            <li><a href="#">Mis Pedidos</a></li>
+                            <li><a href="#">Gestionar Pedidos</a></li>
+                            <li><a href="#">Gestionar Categorias</a></li>
+                            
+                        </ul>
+
+                    </div>
+                </aside>
+
             </div>
-            
-        </header>
-            
-        <!-- MENU -->
-        <nav id="menu">
-            <ul>
-                <li>
-                    <a href="#">Inicio</a>
-                </li>
-                <li>
-                    <a href="#">Categoria1</a>
-                </li>
-                <li>
-                    <a href="#">Categoria2</a>
-                </li>
-                <li>
-                    <a href="#">Categoria3</a>
-                </li>
-                <li>
-                    <a href="#">Categoria4</a>
-                </li>
-            </ul>
-        </nav>
-        
-        <!-- BARRA LATERAL -->
-        <!-- CONTENIDO CENTRAL -->
-        <!-- PIE DE PAGINA -->
-        
+            <!-- CONTENIDO CENTRAL -->
+            <div id="central">
+                <div class="product">
+                    <img src="assets/img/camiseta.png" />
+                    <h2>Camiseta Azul Talla m</h2>
+                    <p> 130 Euros </p>
+                    <a href="">Comprar</a>
+                </div>
+
+                <div class="product">
+                    <img src="assets/img/camiseta.png" />
+                    <h2>Pantalon Azul Talla m</h2>
+                    <p> 40 Euros </p>
+                    <a href="">Comprar</a>
+                </div>
+
+                <div class="product">
+                    <img src="assets/img/camiseta.png" />
+                    <h2>Blusa roja</h2>
+                    <p> 25 Euros </p>
+                    <a href="">Comprar</a>
+                </div>
+            </div>
+            <!-- PIE DE PAGINA -->
+            <footer id="footer">
+                <p>Desarrollado por Washington Nieto &copy:<?= date("Y") ?></p>
+            </footer>
+        </div>
     </body>
 </html>
 
