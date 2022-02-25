@@ -6,7 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Tienda de Camisetas</title>
+        <title>Tienda de Camionetas</title>
         <link rel="stylesheet" href="assets/css/styles.css">
     </head>
     <body>
@@ -16,7 +16,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
                 <div id="logo">
                     <img src="assets/img/camiseta.png" alt="Camiseta Logo" />
                     <a href="index.php">
-                        Tienda de camisetas
+                        Tienda de Camionetas
                     </a>
                 </div>
 
