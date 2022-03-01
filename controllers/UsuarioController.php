@@ -2,7 +2,7 @@
 require_once 'models/usuario.php';
 
 
-class usuarioController{
+class UsuarioController{
     public function index(){
         echo "Controlador Usuario, Accion index";
     }
