@@ -5,8 +5,15 @@ function controllers_autoload($classname){
 
     if($env == "produccion"){
         //cargar controladores en produccion
-        require_once 'controllers/' . ucfirst($classname) . '.php';
-        //include 'controllers/'.$classname.'.php';
+        //require_once 'controllers/'.$classname.'.php';
+        
+        if ($classname == "usuariocontroller"){
+            require_once 'controllers/usuarioController'.'.php';
+        }else{
+            require_once 'controllers/'.$classname.'.php';
+        }
+        
+        
     }else{
         //cargar controladores en local
 
