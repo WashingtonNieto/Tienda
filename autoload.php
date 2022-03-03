@@ -8,9 +8,11 @@ function controllers_autoload($classname){
         //require_once 'controllers/'.$classname.'.php';
         
         if ($classname == "usuariocontroller"){
-            require_once 'controllers/usuarioController'.'.php';
+            require_once 'controllers/UsuarioController'.'.php';
+        }elseif ($classname == "categoriacontroller"){
+            require_once 'controllers/CategoriaController'.'.php';
         }else{
-            require_once 'controllers/'.$classname.'.php';
+            require_once 'controllers/'. ucfirst($classname).'.php';
         }
         
         

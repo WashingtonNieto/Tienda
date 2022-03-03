@@ -23,23 +23,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
             </header>
 
             <!-- MENU -->
+            <?php $categorias = Utils::showCategorias(); ?>
             <nav id="menu">
                 <ul>
                     <li>
                         <a href="#">Inicio</a>
                     </li>
+                    <?php while ($cat = $categorias-> fetch_object()): ?>
+                    <!-- 
+                    fetch_object  Recorreme y sacame los objetos de todas 
+                    las categorias de todo el resourcet que ha devuelto la bd
+                    -->
                     <li>
-                        <a href="#">Categoria1</a>
+                        <a href="#"><?= $cat?->nombre?></a>
                     </li>
-                    <li>
-                        <a href="#">Categoria2</a>
-                    </li>
-                    <li>
-                        <a href="#">Categoria3</a>
-                    </li>
-                    <li>
-                        <a href="#">Categoria4</a>
-                    </li>
+                    <?php endwhile; ?>
+    
                 </ul>
             </nav>
 
