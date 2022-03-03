@@ -61,23 +61,23 @@ class Producto{
     }
 
     public function setNombre($nombre): void {
-        $this->nombre = $nombre;
+        $this->nombre = $this->db->real_escape_string($nombre);
     }
 
     public function setDescripcion($descripcion): void {
-        $this->descripcion = $descripcion;
+        $this->descripcion = $this->db->real_escape_string($descripcion);
     }
 
     public function setPrecio($precio): void {
-        $this->precio = $precio;
+        $this->precio = $this->db->real_escape_string($precio);
     }
 
     public function setStock($stock): void {
-        $this->stock = $stock;
+        $this->stock = $this->db->real_escape_string($stock);
     }
 
     public function setOferta($oferta): void {
-        $this->oferta = $oferta;
+        $this->oferta = $this->db->real_escape_string($oferta);
     }
 
     public function setFecha($fecha): void {
@@ -93,6 +93,21 @@ class Producto{
         return $productos;
     }
 
+    
+        public function save(){
+        $sql = "INSERT INTO productos VALUES(NULL, '{$this->getCategoria_id()}','{$this->getNombre()}','{$this->getDescripcion()}',{$this->getPrecio()},{$this->getStock()},null, CURDATE(), null);";
+        $save = $this->db->query($sql);
+
+        echo $this->db->error;
+        var_dump($sql);
+        die();
+        
+        $result = false;
+        if($save){
+            $result = true;
+        }
+        return $result;
+    }
     
 }
 

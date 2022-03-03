@@ -18,7 +18,7 @@ class UsuarioController{
             $email = isset($_POST['email']) ? $_POST['email'] : false;
             $password = isset($_POST['password']) ? $_POST['password'] : false;
             
-            var_dump($nombre);
+            //var_dump($nombre);
             
             if($nombre && $apellidos && $email && $password){
                 $usuario = new Usuario();

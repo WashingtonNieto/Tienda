@@ -25,18 +25,41 @@ class ProductoController{
     
     public function crear(){
         Utils::isAdmin();
-        
-        require_once 'views/producto/crear.ph';
+        require_once 'views/producto/crear.php';
     }
     
     public function save(){
-             Utils::isAdmin();
+        Utils::isAdmin();
         if(isset($_POST) && isset($_POST['nombre'])){
-            //Guardar la categoria
-            $categoria = new Categoria();
-            $categoria->setNombre($_POST['nombre']);
-            $save = $categoria->save();
+            //var_dump($_POST);
+            //die();
+            //Guardar la producto
+            $nombre = isset($_POST['nombre']) ? $_POST['nombre']: false;
+            $descripcion = isset($_POST['descripcion']) ? $_POST['$descripcion']: false;
+            $precio = isset($_POST['precio']) ? $_POST['precio']: false;
+            $stock = isset($_POST['stock']) ? $_POST['stock']: false;
+            $categoria = isset($_POST['categoria']) ? $_POST['categoria']: false;
+            
+            if($nombre && $descripcion && $precio && $stock && Categoria){
+               $producto = new Producto();
+               $producto->setNombre($nombre);
+               $producto->setDescripcion($descripcion);
+               $producto->setPrecio($precio);
+               $producto->setStock($stock);
+               $producto->setCategoria_id($categoria);
+               
+               $save = $producto->save();
+               if($save){
+                   $_SESSION['producto'] = "complete";
+               }else{
+                   $_SESSION['producto'] = "failed";
+               }
+            }else{
+                $_SESSION['producto'] = "failed";
+            }
+        }else{
+            $_SESSION['producto'] = "failed";
         }
-        header("Location:".base_url."categoria/index");   
+        header("Location:".base_url."producto/gestion");   
     }
 }
