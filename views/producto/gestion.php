@@ -4,6 +4,16 @@
     Crear Producto
 </a>
 
+<?php if(isset($_SESSION['producto']) && $_SESSION['producto'] == 'complete'): ?>
+    <strong class="alert_green"> El producto ha sido creado exitosamente</strong>
+<?php elseif(isset($_SESSION['producto']) && $_SESSION['producto'] != 'complete'): ?>
+    <strong class="alert_red"> El producto NO ha sido creado exitosamente</strong>
+<?php endif;?>
+
+<?php Utils::deleteSession('producto');?>
+    
+
+    
 <table border="1">
     <tr>
         <th>ID</th>

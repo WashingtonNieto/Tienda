@@ -35,18 +35,35 @@ class ProductoController{
             //die();
             //Guardar la producto
             $nombre = isset($_POST['nombre']) ? $_POST['nombre']: false;
-            $descripcion = isset($_POST['descripcion']) ? $_POST['$descripcion']: false;
+            $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion']: false;
             $precio = isset($_POST['precio']) ? $_POST['precio']: false;
             $stock = isset($_POST['stock']) ? $_POST['stock']: false;
             $categoria = isset($_POST['categoria']) ? $_POST['categoria']: false;
-            
-            if($nombre && $descripcion && $precio && $stock && Categoria){
+           
+            if($nombre && $descripcion && $precio && $stock && $categoria){
                $producto = new Producto();
                $producto->setNombre($nombre);
                $producto->setDescripcion($descripcion);
                $producto->setPrecio($precio);
                $producto->setStock($stock);
                $producto->setCategoria_id($categoria);
+               
+               //Guardar la imagen
+               $file = $_FILES['imagen'];
+               $filename = $file['name'];
+               $mimetype = $file['type'];
+               
+               //var_dump($file);
+               //die();
+               
+               if($mimetype == "image/jpg" ||$mimetype == "image/jpeg" || $mimetype == "image/png" || $mimetype == "image/git" ){
+                   if(!is_dir('uploads/images')){
+                       mkdir('uploads/images',0777,true);
+                   }
+                   move_uploaded_file($file['tmp_name'], 'uploads/images/'.$filename);
+                   $producto->setImagen($filename);
+               }
+                   
                
                $save = $producto->save();
                if($save){
