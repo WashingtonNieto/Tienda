@@ -117,6 +117,7 @@ class Producto{
         if($delete){
             $result = true;
         }
+        return $result;
     }
     
 }

@@ -12,7 +12,13 @@
 
 <?php Utils::deleteSession('producto');?>
     
+<?php if(isset($_SESSION['delete']) && $_SESSION['delete'] == 'complete'): ?>
+    <strong class="alert_green"> El producto ha sido borrado exitosamente</strong>
+<?php elseif(isset($_SESSION['delete']) && $_SESSION['delete'] != 'complete'): ?>
+    <strong class="alert_red"> El producto NO ha sido borrado correctamente</strong>
+<?php endif;?>
 
+<?php Utils::deleteSession('delete');?>
     
 <table border="1">
     <tr>

@@ -93,10 +93,14 @@ class ProductoController{
             $producto->setId($id);
             $delete = $producto->delete();
             if($delete){
-                $_SESSION['delete'];
+                $_SESSION['delete'] = 'complete';
+            }else{
+                $_SESSION['delete'] = 'failed';
             }
+        }else{
+            $_SESSION['delete'] = 'failed';
         }
-        
+        header('Location:'.base_url.'producto/gestion');
     }
 
 }
