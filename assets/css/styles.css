@@ -42,6 +42,10 @@ td{
 }
 
 
+.thumb{
+    width: 100px;
+}
+
 /*CONTAINER*/
 #container{
     width:80%;
