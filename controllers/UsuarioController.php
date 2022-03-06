@@ -39,7 +39,9 @@ class UsuarioController{
         }else{
             $_SESSION['register'] = "failed";
         }
-        header("Location:".base_url.'usuario/registro');
+        if(!headers_sent()){
+           header("Location:".base_url.'usuario/registro');
+        }        
     }
     
     public function login(){
@@ -66,7 +68,9 @@ class UsuarioController{
             //die();
             //Crear una session
         }
-        header("Location:".base_url);
+        if(!headers_sent()){
+            header("Location:".base_url);
+        }        
     }
     
     public function logout(){
@@ -77,7 +81,9 @@ class UsuarioController{
             unset($_SESSION['admin']);
         }
         
-        header("Location:".base_url);
+        if(!headers_sent()){
+            header("Location:".base_url);
+        }        
 
     }
 }

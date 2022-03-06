@@ -24,6 +24,8 @@ class CategoriaController{
             $categoria->setNombre($_POST['nombre']);
             $save = $categoria->save();
         }
-        header("Location:".base_url."categoria/index");
+        if(!headers_sent()){
+            header("Location:".base_url."categoria/index");
+        }        
     }
 }

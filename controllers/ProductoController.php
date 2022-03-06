@@ -86,7 +86,9 @@ class ProductoController {
         } else {
             $_SESSION['producto'] = "failed";
         }
-        header("Location:" . base_url . "producto/gestion");
+        if(!headers_sent()){
+            header('Location:' . base_url . 'producto/gestion');
+        }        
     }
 
     public function editar() {
@@ -103,7 +105,9 @@ class ProductoController {
 
             require_once 'views/producto/crear.php';
         } else {
-            header('Location:' . base_url . 'producto/gestion');
+            if(!headers_sent()){
+                header('Location:' . base_url . 'producto/gestion');
+            }        
         }
     }
 
@@ -123,7 +127,9 @@ class ProductoController {
         } else {
             $_SESSION['delete'] = 'failed';
         }
-        header('Location:' . base_url . 'producto/gestion');
+        if(!headers_sent()){
+            header('Location:' . base_url . 'producto/gestion');
+        }
     }
 
 }
