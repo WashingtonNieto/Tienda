@@ -6,7 +6,23 @@ class ProductoController {
 
     public function index() {
         //renderizar vista de producto
+        $producto = new Producto();
+        $productos = $producto->getRandom(6);
+
         require_once 'views/producto/destacados.php';
+    }
+
+    public function ver() {
+
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            $producto = new Producto();
+            $producto->setId($id);
+            $product = $producto->getOne();
+        }
+        require_once 'views/producto/ver.php';
+
     }
 
     public function gestion() {
@@ -65,14 +81,14 @@ class ProductoController {
                         $producto->setImagen($filename);
                     }
                 }
-                
+
                 //si llega un metodo $_GET es edicion..
-                if(isset($_GET['id'])){
+                if (isset($_GET['id'])) {
                     $id = $_GET['id'];
                     $producto->setId($id);
                     $save = $producto->edit();
-                //sino es insercion-producto nuevo
-                }else{
+                    //sino es insercion-producto nuevo
+                } else {
                     $save = $producto->save();
                 }
                 if ($save) {
@@ -86,9 +102,9 @@ class ProductoController {
         } else {
             $_SESSION['producto'] = "failed";
         }
-        if(!headers_sent()){
+        if (!headers_sent()) {
             header('Location:' . base_url . 'producto/gestion');
-        }        
+        }
     }
 
     public function editar() {
@@ -105,9 +121,9 @@ class ProductoController {
 
             require_once 'views/producto/crear.php';
         } else {
-            if(!headers_sent()){
+            if (!headers_sent()) {
                 header('Location:' . base_url . 'producto/gestion');
-            }        
+            }
         }
     }
 
@@ -127,7 +143,7 @@ class ProductoController {
         } else {
             $_SESSION['delete'] = 'failed';
         }
-        if(!headers_sent()){
+        if (!headers_sent()) {
             header('Location:' . base_url . 'producto/gestion');
         }
     }
