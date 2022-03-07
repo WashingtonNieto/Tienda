@@ -33,7 +33,8 @@ a:hover{
 table{
     text-align: center;
     width: 100%; /*para que ocupe todo el ancho*/
-    border: 1px solid #555;
+    /*border: 1px solid #555; */
+    border-bottom: 1px solid #ccc;
 }
 
 td{
@@ -305,6 +306,12 @@ button{
 .product img{
     height: 150px;
     margin-bottom: 10px;
+}
+
+.img_carrito{
+    height: 80px;
+    display: block;
+    margin: 10px auto;
 }
 
 .product h2{
