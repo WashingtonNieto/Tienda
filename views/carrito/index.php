@@ -27,4 +27,11 @@
     <?php endforeach; ?>
         
 </table>
+<br/>
+
+<div class="total-carrito">
+    <?php $stats = Utils::statscarrito(); ?>
+    <h3>Precio total: $<?=$stats['total']?> </h3>
+    <a href="" class="button button-pedido">Hacer pedido</a>
+</div>
    
