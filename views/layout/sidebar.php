@@ -7,7 +7,7 @@
             <?php $stats = Utils::statscarrito(); ?>
             <li><a href="<?= base_url ?>carrito/index">Productos(<?=$stats['count'] ?>)</a></li>
             <li><a href="<?= base_url ?>carrito/index">Total <?=$stats['total'] ?> </a></li>
-            <li><a href="<?= base_url ?>carrito/gestion">Ver el carrito</a></li>
+            <li><a href="<?= base_url ?>carrito/index">Ver el carrito</a></li>
         </ul>        
     </div>
 
