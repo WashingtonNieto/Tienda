@@ -102,6 +102,17 @@ class Pedido{
         return $pedidos->fetch_object(); //lo devuelvo con un fetch para que sea un objeto usable
     }
     
+    public function getOneByUser(){
+        $sql = "SELECT id, coste FROM pedidos "
+                . "WHERE usuario_id = {$this->getUsuario_id()} ORDER BY id DESC LIMIT 1";
+                
+        $pedido = $this->db->query($sql);               
+                echo $sql;
+                echo $this->db->error;
+                die();
+        return $pedido->fetch_object(); //lo devuelvo con un fetch para que sea un objeto usable
+    }
+    
     public function save(){
         $sql = "INSERT INTO pedidos VALUES(NULL, '{$this->getUsuario_id()}','{$this->getDepartamento()}','{$this->getCiudad()}','{$this->getDireccion()}',{$this->getCoste()}, 'confirm', CURDATE(),CURTIME()); ";
         $save = $this->db->query($sql);
@@ -123,6 +134,8 @@ class Pedido{
         $query = $this->db->query($sql);
         $pedido_id = $query->fetch_object()->pedido;
  
+        //var_dump($pedido_id);
+        
         foreach($_SESSION['carrito'] as $elemento){ 
             $producto = $elemento['producto'];
             
