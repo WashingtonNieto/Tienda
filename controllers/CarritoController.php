@@ -2,12 +2,14 @@
 
 require_once 'models/producto.php';
 
+
 class CarritoController {
 
     public function index() {
-        $carrito = $_SESSION['carrito'];
-        
-        require_once 'views/carrito/index.php';
+        if (isset($_SESSION['identity'])) {
+            $carrito = $_SESSION['carrito'];
+        }
+            require_once 'views/carrito/index.php';
     }
 
     public function add() {
@@ -45,9 +47,10 @@ class CarritoController {
                 );
             }
         }
-        if (!headers_sent()) {
-            header("Location:" . base_url . "carrito/index");
-        }
+        //if (!headers_sent()) {
+        //    header("Location:" . base_url . "carrito/index");
+        //}
+        echo '<script>window.location="'.base_url.'carrito/index"</script>';
     }
 
     public function remove() {
@@ -56,9 +59,10 @@ class CarritoController {
 
     public function delete_all() {
         unset($_SESSION['carrito']);
-        if (!headers_sent()) {
-            header("Location:" . base_url . "carrito/index");
-        }
+        //if (!headers_sent()) {
+        //    header("Location:" . base_url . "carrito/index");
+        //}
+        echo '<script>window.location="'.base_url.'carrito/index"</script>';
     }
 
 }
