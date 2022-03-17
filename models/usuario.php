@@ -101,6 +101,14 @@ class Usuario{
             
             if ($verify){
                 $result = $usuario;
+                if(!headers_sent()){
+                    header("Location:".base_url);
+                } else {
+                    echo
+                    '<script>
+                        window.location.href="http://localhost/Tienda/";
+                        </script>';
+                } 
             }
         }
         return $result;

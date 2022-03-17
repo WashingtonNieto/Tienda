@@ -5,11 +5,9 @@
         <group>
             <file>file:/C:/xampp/htdocs/Tienda/views/pedido/confirmado.php</file>
             <file>file:/C:/xampp/htdocs/Tienda/models/pedido.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda/views/pedido/hacer.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda/views/carrito/index.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda/assets/database/database.sql</file>
             <file>file:/C:/xampp/htdocs/Tienda/controllers/PedidoController.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda/controllers/ProductoController.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda/views/layout/sidebar.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda/config/parameters.php</file>
         </group>
     </open-files>
 </project-private>

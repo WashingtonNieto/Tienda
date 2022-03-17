@@ -8,9 +8,18 @@
     <br/>
     <?php if(isset($pedido)): ?>
         <h3>Datos del pedido</h3>
-        Número del pedido: <br/>
-        Total a pagar: <br/>
+        Número del pedido: <?= $pedido->id?> <br/>
+        Total a pagar: <?= $pedido->coste?> <br/>
         Productos:
+        
+        <?php while($producto = $productos->fetch_object()): ?>
+            <ul>
+                <li>
+                    <?=$producto->nombre?> - $<?=$producto->precio?> - <?=$producto->unidades?>
+                </li>
+            </ul>
+        <?php endwhile; ?>
+                
     <?php endif; ?>
     
     

@@ -1,4 +1,5 @@
 <?php
+
 require_once 'models/usuario.php';
 
 
@@ -68,12 +69,14 @@ class UsuarioController{
             //die();
             //Crear una session
         }
+
         if(!headers_sent()){
             header("Location:".base_url);
         }        
     }
     
     public function logout(){
+        
         if(isset($_SESSION['identity'])){
             unset($_SESSION['identity']);
         }
@@ -83,7 +86,30 @@ class UsuarioController{
         
         if(!headers_sent()){
             header("Location:".base_url);
+        } else {
+            echo
+            '<script>
+                window.location.href="http://localhost/Tienda/";
+                </script>';
+            
         }        
+        
+//        if (!headers_sent($filename, $linenum)) {
+//            header("Location:".base_url);
+//            exit;
+//
+//        // Lo más probable es generar un error aquí.
+//        } else {
+//
+//            echo "Headers already sent in $filename on line $linenum\n" .
+//                  "Cannot redirect, for now please click this <a " .
+//                  "href=\"http://localhost/Tienda\">link</a> instead\n";
+//        exit;
+//        }
+
+        
+        
+        
 
     }
 }

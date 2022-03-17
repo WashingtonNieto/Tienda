@@ -107,10 +107,21 @@ class Pedido{
                 . "WHERE usuario_id = {$this->getUsuario_id()} ORDER BY id DESC LIMIT 1";
                 
         $pedido = $this->db->query($sql);               
-                echo $sql;
-                echo $this->db->error;
-                die();
+                //echo $sql;
+                //echo $this->db->error;
+                //die();
         return $pedido->fetch_object(); //lo devuelvo con un fetch para que sea un objeto usable
+    }
+    
+    public function getProductoByPedido($id){
+        $sql = "SELECT pr.*, lp.unidades FROM productos pr "
+                ."INNER JOIN lineas_pedidos lp ON pr.id = lp.producto_id "
+                ."WHERE lp.pedido_id = {$id}";
+                //echo $sql;
+                //echo $this->db->error;
+                //die();
+        $productos = $this->db->query($sql);               
+        return $productos;
     }
     
     public function save(){

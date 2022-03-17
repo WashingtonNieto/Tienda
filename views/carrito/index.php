@@ -1,6 +1,7 @@
 
 <h1>Carrito de la compra</h1>
 
+<?php if(isset($_SESSION['identity'])):?>
 <table>
     <tr>
         <th>Imagen</th>
@@ -9,7 +10,9 @@
         <th>Unidades</th>
     </tr>
     <?php 
-        foreach($carrito as $indice => $elemento): 
+
+    foreach($carrito as $indice => $elemento): 
+    //foreach($_SESSION['carrito'] as $indice => $elemento): 
         $producto = $elemento['producto'];
     ?>
     <tr>
@@ -35,3 +38,7 @@
     <a href="<?=base_url?>pedido/hacer" class="button button-pedido">Hacer pedido</a>
 </div>
    
+<?php else:?>
+    <h1>Necesitas estar identificado</h1>
+    <p>Necesitas estar logeado en la web para poder realizar tu pedido.</p>
+<?php endif; ?>

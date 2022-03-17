@@ -1,4 +1,6 @@
-<?php
+<?php 
+
+ob_start();
 
 require_once 'models/pedido.php';
 
@@ -41,12 +43,9 @@ class PedidoController {
             } else {
                 $_SESSION['pedido'] = "failed";
             }
+                //header("Location:" . base_url . 'pedido/confirmado');
+                echo '<script>window.location="'.base_url.'pedido/confirmado"</script>';
             
-         //   if (!headers_sent()) {
-        //        header("Location:" . base_url . 'pedido/confirmado');
-                require_once 'views/pedido/confirmado.php';
-        //    }
-
         } else {
             // Redigir al index
             header("Location:" . base_url);
@@ -54,14 +53,15 @@ class PedidoController {
     }
 
     public function confirmado() {
-        if (isset($_SESSION['identity'])) {
+        if(isset($_SESSION['identity'])) {
             $identity = $_SESSION['identity'];
             $pedido = new Pedido();
             $pedido->setUsuario_id($identity->id);
 
             $pedido = $pedido->getOneByUser();
+
             $pedido_productos = new Pedido();
-            $productos = $pedido_productos->getProductosByPedido($pedido->id);
+            $productos = $pedido_productos->getProductoByPedido($pedido->id);
         }
         require_once 'views/pedido/confirmado.php';
     }
