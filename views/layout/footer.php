@@ -2,7 +2,7 @@
 </div>
 <!-- PIE DE PAGINA -->
 <footer id="footer">
-    <p>Desarrollado por Washington Nieto &copy:<?= date("Y") ?></p>
+    <p>El Palacio De Mis Angelitos &copy:<?= date("Y") ?></p>
 </footer>
 </div>
 </body>

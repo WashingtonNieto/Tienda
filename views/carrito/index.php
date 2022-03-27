@@ -1,5 +1,5 @@
 
-<h1>Carrito de la compra</h1>
+<h1>Salidas</h1>
 
 <?php if(isset($_SESSION['identity'])):?>
 <table>

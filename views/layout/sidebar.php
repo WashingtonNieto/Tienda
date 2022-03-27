@@ -7,7 +7,7 @@
             <?php $stats = Utils::statscarrito(); ?>
             <li><a href="<?= base_url ?>carrito/index">Productos(<?=$stats['count'] ?>)</a></li>
             <li><a href="<?= base_url ?>carrito/index">Total <?=$stats['total'] ?> </a></li>
-            <li><a href="<?= base_url ?>carrito/index">Ver el carrito</a></li>
+            <li><a href="<?= base_url ?>carrito/index">Ver salidas</a></li>
         </ul>        
     </div>
 
@@ -31,11 +31,11 @@
             <?php if (isset($_SESSION['admin'])): ?>
                 <li><a href="<?= base_url ?>categoria/index">Gestionar Categorias</a></li>
                 <li><a href="<?= base_url ?>producto/gestion">Gestionar Productos</a></li>
-                <li><a href="#">Gestionar Pedidos</a></li>
+                <li><a href="#">Gestionar Salidas</a></li>
             <?php endif; ?>
 
             <?php if (isset($_SESSION['identity'])): ?>
-                <li><a href="#">Mis Pedidos</a></li>
+                <li><a href="#">Mis Salidas</a></li>
                 <li><a href="<?= base_url ?>usuario/logout">Cerrar sesión</a></li>
             <?php else: ?>
                 <li><a href="<?= base_url ?>usuario/registro">Registrate aqui!</a></li>
