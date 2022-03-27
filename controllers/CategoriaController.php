@@ -4,6 +4,7 @@ require_once 'models/categoria.php';
 require_once 'models/producto.php';
 
 class CategoriaController{
+    
     public function index(){
         Utils::isAdmin();
         $categoria = new Categoria();
@@ -29,6 +30,20 @@ class CategoriaController{
         require_once 'views/categoria/ver.php';
     }
     
+    public function gestion() {
+        Utils::isAdmin();
+
+        //creamos una variable producto
+        //que es una instancia de la clase Producto
+        //creo el objeto para poder acceder al select de los productos
+        //el resultado se guarda en $productos
+        //los cuales se le pasan a la vista gestion.php
+        $categoria = new Categoria();
+        $Categorias = $categoria->getAll();
+
+        require_once 'views/categoria/gestion.php';
+    }
+
     public function crear(){
         Utils::isAdmin();
         require_once 'views/categoria/crear.php';

@@ -5,7 +5,7 @@ require_once 'models/producto.php';
 class ProductoController {
 
     public function index() {
-        //renderizar vista de producto
+        Utils::isAdmin();
         $producto = new Producto();
         $productos = $producto->getRandom(6);
 

@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/Tienda/index.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda/models/producto.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda/views/layout/header.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda/views/producto/destacados.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda/controllers/UsuarioController.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda/views/producto/gestion.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda/controllers/ProductoController.php</file>
             <file>file:/C:/xampp/htdocs/Tienda/views/layout/sidebar.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda/views/categoria/gestion.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda/controllers/CategoriaController.php</file>
         </group>
     </open-files>
 </project-private>
