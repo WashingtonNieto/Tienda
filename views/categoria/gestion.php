@@ -37,8 +37,8 @@
                 para que traiga el primer parametro se usa &
             -->
 
-            <a href="<?=base_url?>categoria/editar&id=<?=$pro->id?>" class="button button-gestion">Editar</a>
-            <a href="<?=base_url?>categoria/eliminar&id=<?=$pro->id?>" class="button button-gestion button-red">Eliminar</a>
+            <a href="<?=base_url?>categoria/editar&id=<?=$cat->id?>" class="button button-gestion">Editar</a>
+            <a href="<?=base_url?>categoria/eliminar&id=<?=$cat->id?>" class="button button-gestion button-red">Eliminar</a>
         </td>
     </tr>
         

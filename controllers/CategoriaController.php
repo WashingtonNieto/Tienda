@@ -61,4 +61,46 @@ class CategoriaController{
             header("Location:".base_url."categoria/index");
         }        
     }
+    
+    public function editar() {
+        //averiguemos primero que trae $_GET
+        //var_dump($_GET);
+        Utils::isAdmin();
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $edit = true;
+
+            $categoria = new Categoria();
+            $categoria->setId($id);
+            $cat = $categoria->getOne();
+
+            require_once 'views/categoria/crear.php';
+        } else {
+            if (!headers_sent()) {
+                header('Location:' . base_url . 'categoria/gestion');
+            }
+        }
+    }
+
+    public function eliminar() {
+        Utils::isAdmin();
+
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $categoria = new Categoria();
+            $categoria->setId($id);
+            $delete = $categoria->delete();
+            if ($delete) {
+                $_SESSION['delete'] = 'complete';
+            } else {
+                $_SESSION['delete'] = 'failed';
+            }
+        } else {
+            $_SESSION['delete'] = 'failed';
+        }
+        if (!headers_sent()) {
+            header('Location:' . base_url . 'producto/gestion');
+        }
+    }
+    
 }

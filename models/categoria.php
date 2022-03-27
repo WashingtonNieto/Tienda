@@ -47,6 +47,32 @@ class Categoria{
         return $result;
     }
  
+    public function edit(){
+        $sql = "UPDATE categorias SET nombre='{$this->getNombre()}'";
+       
+        $save = $this->db->query($sql);
+
+        echo $this->db->error;
+        //var_dump($sql);
+        //die();
+        
+        $result = false;
+        if($save){
+            $result = true;
+        }
+        return $result;
+    }
+    
+    public function delete(){
+        $sql = "DELETE FROM categorias WHERE id={$this->id}";
+        $delete = $this->db->query($sql);
+        
+        $result = false;
+        if($delete){
+            $result = true;
+        }
+        return $result;
+    }
 
 
 }
