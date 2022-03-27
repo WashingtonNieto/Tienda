@@ -106,7 +106,8 @@ class Usuario{
                 } else {
                     echo
                     '<script>
-                        window.location.href="http://localhost/Tienda/";
+                        //window.location.href="http://localhost/Tienda/";
+                        window.location.href="https://washingtonnieto.com/Tienda/";
                         </script>';
                 } 
             }
