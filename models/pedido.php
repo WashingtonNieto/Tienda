@@ -113,6 +113,18 @@ class Pedido{
         return $pedido->fetch_object(); //lo devuelvo con un fetch para que sea un objeto usable
     }
     
+    
+    public function getAllByUser(){
+        $sql = "SELECT p.* FROM pedidos p "
+                . "WHERE p.usuario_id = {$this->getUsuario_id()} ORDER BY id DESC";
+                
+        $pedido = $this->db->query($sql);               
+                //echo $sql;
+                //echo $this->db->error;
+                //die();
+        return $pedido;
+    }
+    
     public function getProductoByPedido($id){
         $sql = "SELECT pr.*, lp.unidades FROM productos pr "
                 ."INNER JOIN lineas_pedidos lp ON pr.id = lp.producto_id "
@@ -166,4 +178,22 @@ class Pedido{
         }
         return $result;
     }
+    
+    public function edit(){
+        $sql = "UPDATE pedidos SET estado='{$this->getEstado()}' ";
+        $sql .= " WHERE id = {$this->getId()};";
+        
+        $save = $this->db->query($sql);
+
+        echo $this->db->error;
+        //var_dump($sql);
+        //die();
+        
+        $result = false;
+        if($save){
+            $result = true;
+        }
+        return $result;
+    }
+
 }

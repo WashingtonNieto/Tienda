@@ -65,5 +65,68 @@ class PedidoController {
         }
         require_once 'views/pedido/confirmado.php';
     }
+    
+    public function mis_pedidos(){
+        Utils::isIdentity();
+        $usuario_id = $_SESSION['identity']->id;
+        $pedido = new Pedido();
+        
+        //sacar los pedidos del usuario
+        $pedido->setUsuario_id($usuario_id);
+        $pedidos = $pedido->getAllByUser();
+        require_once 'views/pedido/mis_pedidos.php';
+    }
+    
+    public function detalle(){
+        Utils::isIdentity();
+        
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            
+            //Sacar los datos del pedido
+            $pedido = new Pedido();
+            $pedido->setId($id);
+            $pedido = $pedido->getOne();
+
+            //sacar los productos
+            $pedido_productos = new Pedido();
+            $productos = $pedido_productos->getProductoByPedido($id);
+
+            require_once 'views/pedido/detalle.php';
+
+        }else{
+            header('Location:'.base_url.'pedido/mis_pedidos');
+        }
+    }
+    
+    public function gestion(){
+        Utils::isAdmin();
+        $gestion = true;
+        
+        $pedido = new Pedido();
+        $pedidos = $pedido->getAll();
+        
+        
+        
+        require_once 'views/pedido/mis_pedidos.php';
+    }
+    
+    public function estado(){
+        Utils::isAdmin();
+        if(isset($_POST['pedido_id']) && isset($_POST['estado'])){
+            //recogo los datos
+            $id = $_POST['pedido_id'];
+            $estado = $_POST['estado'];
+ 
+            //update del pedido
+            $pedido = new Pedido();
+            $pedido->setId($id);
+            $pedido->setEstado($estado);
+            $pedido->edit();
+            header("Location:".base_url.'pedido/detalle&$id='.$id);
+        }else{
+            header("Location:".base_url);
+        }
+    }
 
 }
