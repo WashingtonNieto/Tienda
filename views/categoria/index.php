@@ -24,6 +24,7 @@
     <tr>
         <th>ID</th>
         <th>NOMBRE</th>
+        <th>ACCIONES</th>
     </tr> 
    <?php while($cat = $categorias->fetch_object()): ?>
 

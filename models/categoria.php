@@ -39,7 +39,9 @@ class Categoria{
     public function save(){
         $sql = "INSERT INTO categorias VALUES(NULL, '{$this->getNombre()}');";
         $save = $this->db->query($sql);
-
+//       echo $this->db->error;
+//        var_dump($sql);
+//        die();
         $result = false;
         if($save){
             $result = true;
@@ -49,12 +51,13 @@ class Categoria{
  
     public function edit(){
         $sql = "UPDATE categorias SET nombre='{$this->getNombre()}'";
+        $sql .= " WHERE id = {$this->id};";
        
         $save = $this->db->query($sql);
 
-        echo $this->db->error;
-        //var_dump($sql);
-        //die();
+//        echo $this->db->error;
+//        var_dump($sql);
+//        die();
         
         $result = false;
         if($save){

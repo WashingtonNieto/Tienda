@@ -55,7 +55,24 @@ class CategoriaController{
             //Guardar la categoria
             $categoria = new Categoria();
             $categoria->setNombre($_POST['nombre']);
-            $save = $categoria->save();
+
+            //si llega un metodo $_GET es edicion..
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                $categoria->setId($id);
+                $save = $categoria->edit();
+                //sino es insercion-producto nuevo
+            } else {
+                $save = $categoria->save();
+            }
+            if ($save) {
+                $_SESSION[''] = "complete";
+            } else {
+                $_SESSION['categoria'] = "failed";
+            }
+         
+        } else {
+            $_SESSION['categoria'] = "failed";
         }
         if(!headers_sent()){
             header("Location:".base_url."categoria/index");
@@ -77,7 +94,7 @@ class CategoriaController{
             require_once 'views/categoria/crear.php';
         } else {
             if (!headers_sent()) {
-                header('Location:' . base_url . 'categoria/gestion');
+                header('Location:' . base_url . 'categoria/index');
             }
         }
     }

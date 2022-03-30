@@ -12,7 +12,7 @@
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" value="<?=isset($cat) && is_object($cat) ? $cat->nombre: '';?>" />
 
-        <input type="submit" values="Guardar" />
+        <input type="submit" value="Guardar" />
     </form>
     
 </div>

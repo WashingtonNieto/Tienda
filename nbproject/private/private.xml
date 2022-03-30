@@ -3,10 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/xampp/htdocs/Tienda/views/producto/crear.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda/.htaccess</file>
+            <file>file:/C:/xampp/htdocs/Tienda/models/producto.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda/config/db.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda/views/categoria/index.php</file>
             <file>file:/C:/xampp/htdocs/Tienda/views/producto/gestion.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda/models/categoria.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda/views/categoria/crear.php</file>
             <file>file:/C:/xampp/htdocs/Tienda/controllers/ProductoController.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda/views/layout/sidebar.php</file>
-            <file>file:/C:/xampp/htdocs/Tienda/views/categoria/gestion.php</file>
+            <file>file:/C:/xampp/htdocs/Tienda/config/parameters.php</file>
             <file>file:/C:/xampp/htdocs/Tienda/controllers/CategoriaController.php</file>
         </group>
     </open-files>

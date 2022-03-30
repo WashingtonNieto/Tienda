@@ -83,16 +83,18 @@ class UsuarioController{
         if(isset($_SESSION['admin'])){
             unset($_SESSION['admin']);
         }
+//        if(!headers_sent()){
+//            header("Location:".base_url."/index.php");
+//            exit;
+//        } else {
+//            echo
+//            '<script>
+//                window.location.href="http://localhost/Tienda/index.php";
+//                exit;
+//                </script>';
+//            
+//        }        
         
-        if(!headers_sent()){
-            header("Location:".base_url);
-        } else {
-            echo
-            '<script>
-                window.location.href="http://localhost/Tienda/";
-                </script>';
-            
-        }        
         
 //        if (!headers_sent($filename, $linenum)) {
 //            header("Location:".base_url);
