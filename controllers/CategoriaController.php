@@ -40,10 +40,69 @@ class CategoriaController{
             //Guardar la categoria
             $categoria = new Categoria();
             $categoria->setNombre($_POST['nombre']);
-            $save = $categoria->save();
+
+            //si llega un metodo $_GET es edicion..
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                $categoria->setId($id);
+                $save = $categoria->edit();
+                //sino es insercion-producto nuevo
+            } else {
+                $save = $categoria->save();
+            }
+            if ($save) {
+                $_SESSION[''] = "complete";
+            } else {
+                $_SESSION['categoria'] = "failed";
+            }
+         
+        } else {
+            $_SESSION['categoria'] = "failed";
         }
         if(!headers_sent()){
             header("Location:".base_url."categoria/index");
         }        
     }
+    
+        public function editar() {
+        //averiguemos primero que trae $_GET
+        //var_dump($_GET);
+        Utils::isAdmin();
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $edit = true;
+
+            $categoria = new Categoria();
+            $categoria->setId($id);
+            $cat = $categoria->getOne();
+
+            require_once 'views/categoria/crear.php';
+        } else {
+            if (!headers_sent()) {
+                header('Location:' . base_url . 'categoria/index');
+            }
+        }
+    }
+    
+        public function eliminar() {
+        Utils::isAdmin();
+
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $categoria = new Categoria();
+            $categoria->setId($id);
+            $delete = $categoria->delete();
+            if ($delete) {
+                $_SESSION['delete'] = 'complete';
+            } else {
+                $_SESSION['delete'] = 'failed';
+            }
+        } else {
+            $_SESSION['delete'] = 'failed';
+        }
+        if (!headers_sent()) {
+            header('Location:' . base_url . 'producto/gestion');
+        }
+    }
+
 }
