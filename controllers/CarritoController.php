@@ -2,14 +2,13 @@
 
 require_once 'models/producto.php';
 
-
 class CarritoController {
 
     public function index() {
         if (isset($_SESSION['identity'])) {
             $carrito = $_SESSION['carrito'];
         }
-            require_once 'views/carrito/index.php';
+        require_once 'views/carrito/index.php';
     }
 
     public function add() {
@@ -28,9 +27,8 @@ class CarritoController {
                     $counter++;
                 }
             }
-
         }
-            
+
         if (!isset($counter) || $counter == 0) {
 
             //conseguir producto
@@ -50,11 +48,38 @@ class CarritoController {
         //if (!headers_sent()) {
         //    header("Location:" . base_url . "carrito/index");
         //}
-        echo '<script>window.location="'.base_url.'carrito/index"</script>';
+        echo '<script>window.location="' . base_url . 'carrito/index"</script>';
     }
 
-    public function remove() {
-        
+    public function delete() {
+        if (isset($_GET['index'])) {
+            $index = $_GET['index'];
+            unset($_SESSION['carrito'][$index]);
+        }
+        echo '<script>window.location="' . base_url . 'carrito/index"</script>';
+        //header("Location:" . base_url . "carrito/index");
+    }
+
+    public function up() {
+        if (isset($_GET['index'])) {
+            $index = $_GET['index'];
+            $_SESSION['carrito'][$index]['unidades']++;
+        }
+        //header("Location:" . base_url . "carrito/index");
+        echo '<script>window.location="' . base_url . 'carrito/index"</script>';
+    }
+
+    public function down() {
+        if (isset($_GET['index'])) {
+            $index = $_GET['index'];
+            $_SESSION['carrito'][$index]['unidades']--;
+
+            if ($_SESSION['carrito'][$index]['unidades'] == 0) {
+                unset($_SESSION['carrito'][$index]);
+            }
+        }
+        //header("Location:" . base_url . "carrito/index");
+        echo '<script>window.location="' . base_url . 'carrito/index"</script>';
     }
 
     public function delete_all() {
@@ -62,7 +87,7 @@ class CarritoController {
         //if (!headers_sent()) {
         //    header("Location:" . base_url . "carrito/index");
         //}
-        echo '<script>window.location="'.base_url.'carrito/index"</script>';
+        echo '<script>window.location="' . base_url . 'carrito/index"</script>';
     }
 
 }

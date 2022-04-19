@@ -1,47 +1,57 @@
-<h1>Gestion de categorias</h1>
+<h1>Carrito de la compra</h1>
 
-<a href="<?=base_url?>categoria/crear" class="button button-small">
-    Crear Categoria
-</a>
-
-<?php if(isset($_SESSION['categoria']) && $_SESSION['categoria'] == 'complete'): ?>
-    <strong class="alert_green"> La categoria ha sido creado exitosamente</strong>
-<?php elseif(isset($_SESSION['categoria']) && $_SESSION['categoria'] != 'complete'): ?>
-    <strong class="alert_red"> La categoria NO ha sido creado exitosamente</strong>
-<?php endif;?>
-
-<?php Utils::deleteSession('categoria');?>
-    
-<?php if(isset($_SESSION['delete']) && $_SESSION['delete'] == 'complete'): ?>
-    <strong class="alert_green"> La categoria ha sido borrado exitosamente</strong>
-<?php elseif(isset($_SESSION['delete']) && $_SESSION['delete'] != 'complete'): ?>
-    <strong class="alert_red"> La categoria NO ha sido borrado correctamente</strong>
-<?php endif;?>
-
-<?php Utils::deleteSession('delete');?>
-    
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>NOMBRE</th>
-        <th>ACCIONES</th>
-    </tr> 
-   <?php while($cat = $categorias->fetch_object()): ?>
-
-    <tr>
-        <td><?=$cat->id; ?></td>
-        <td><?=$cat->nombre; ?></td>
-        <td>
-            <!-- 
-                <a href="<?=base_url?>producto/editar?id=<?=$pro->id?>" class="button button-gestion">Editar</a>
-                al usar ? trae el siguiente parametro no el primero como queremos
-                para que traiga el primer parametro se usa &
-            -->
-
-            <a href="<?=base_url?>categoria/editar&id=<?=$cat->id?>" class="button button-gestion">Editar</a>
-            <a href="<?=base_url?>categoria/eliminar&id=<?=$cat->id?>" class="button button-gestion button-red">Eliminar</a>
-        </td>
-    </tr>
-        
-    <?php endwhile; ?>
+<?php if(isset($_SESSION['carrito']) && count($_SESSION['carrito']) >= 1): ?>
+<table>
+	<tr>
+		<th>Imagen</th>
+		<th>Nombre</th>
+		<th>Precio</th>
+		<th>Unidades</th>
+		<th>Eliminar</th>
+	</tr>
+	<?php 
+		foreach($carrito as $indice => $elemento): 
+		$producto = $elemento['producto'];
+	?>
+	
+	<tr>
+		<td>
+			<?php if ($producto->imagen != null): ?>
+				<img src="<?= base_url ?>uploads/images/<?= $producto->imagen ?>" class="img_carrito" />
+			<?php else: ?>
+				<img src="<?= base_url ?>assets/img/camiseta.png" class="img_carrito" />
+			<?php endif; ?>
+		</td>
+		<td>
+			<a href="<?= base_url ?>producto/ver&id=<?=$producto->id?>"><?=$producto->nombre?></a>
+		</td>
+		<td>
+			<?=$producto->precio?>
+		</td>
+		<td>
+			<?=$elemento['unidades']?>
+			<div class="updown-unidades">
+				<a href="<?=base_url?>carrito/up&index=<?=$indice?>" class="button">+</a>
+				<a href="<?=base_url?>carrito/down&index=<?=$indice?>" class="button">-</a>
+			</div>
+		</td>
+		<td>
+			<a href="<?=base_url?>carrito/delete&index=<?=$indice?>" class="button button-carrito button-red">Quitar producto</a>
+		</td>
+	</tr>
+	
+	<?php endforeach; ?>
 </table>
+<br/>
+<div class="delete-carrito">
+	<a href="<?=base_url?>carrito/delete_all" class="button button-delete button-red">Vaciar carrito</a>
+</div>
+<div class="total-carrito">
+	<?php $stats = Utils::statsCarrito(); ?>
+	<h3>Precio total: <?=$stats['total']?> $</h3>
+	<a href="<?=base_url?>pedido/hacer" class="button button-pedido">Hacer pedido</a>
+</div>
+
+<?php else: ?>
+	<p>El carrito está vacio, añade algun producto</p>
+<?php endif; ?>
